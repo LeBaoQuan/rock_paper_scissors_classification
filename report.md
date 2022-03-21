@@ -5,11 +5,9 @@ MAI391 Final Project
 Link to project on [Github](https://github.com/LeBaoQuan/rock_paper_scissors_classification)
 
 
-<div align="center">
 
-  # ROCK, PAPER, SCISSORS CLASSIFICATION WITH  MACHINE-LEARNING #
-</div>
 
+# ROCK, PAPER, SCISSORS CLASSIFICATION WITH  MACHINE-LEARNING
 
 ## __Overview:__
 
@@ -22,7 +20,7 @@ Link to project on [Github](https://github.com/LeBaoQuan/rock_paper_scissors_cla
 
   Basic knowledge for this research includes basic Artificial Neural Network (ANN - fully connected) and Convolutional Neural Network (CNN).
 
-    - comparision between ANN and CNN
+    - comparison between ANN and CNN
 
 ![](ann_vs_cnn.png)
 
@@ -46,7 +44,7 @@ Link to project on [Github](https://github.com/LeBaoQuan/rock_paper_scissors_cla
       - Convolutional layers: results in an output of similar width and height, but change in depth (depth = number of filters)
       - ReLU layer: activation function for thresholding at 0, keep the size the same
       - Pool layer: to reduce the size, to prevent overfitting
-      - Lastly, a fully connected (Dense) layer to produce the output (shape 1x1xN where N is the number of catergories)
+      - Lastly, a fully connected (Dense) layer to produce the output (shape 1x1xN where N is the number of categories)
 
 ## __Data Preparation:__
 
@@ -106,7 +104,17 @@ Link to project on [Github](https://github.com/LeBaoQuan/rock_paper_scissors_cla
    - Compare the result and explain why CNN is better to be  used for working with images
    - Refine the CNN model to get a better result
 
-## __Building and Refining Model:__
+   - For both fully-connected ANN and CNN approach, first a Flatten layer should be applied to convert the image into 2d matrices. And in the output layers, a Fully-Connected (Dense) layer using Softmax classification (to return the classified percentage of each categories (rock, paper, scissors)).
+   -
+   - The loss function for this model is mainly composed of Categorical Cross-Entropy because this is a multi categories classification
+
+   ![](cross_entropy_loss_func.png)
+
+      * In case of binary classification problem (as studied during 391 course), output size is 2. In case of this particular problem (rock, paper, scissors), output size is 3
+
+   - Lastly, Gradient Descent with Momentum  is used across all layers as the optimizer
+
+## __Implementation and Refining Model:__
 
   - _basic ANN model:_
   ```python
@@ -145,7 +153,7 @@ model_cnn = keras.Sequential([
 
 ![](basic_cnn_model.png)
           - Accuracy on the test dataset has been increase but still 52%
-          - This probably due to overfitting problems (as accuracy is perfect with train dataset but mediorce with test dataset)
+          - This probably due to overfitting problems (as accuracy is perfect with train dataset but mediocre with test dataset)
           - Attempt to solve this problem by introducing pooling layers into the model
 
 - _improved CNN model:_
@@ -171,7 +179,7 @@ model_cnn = keras.Sequential([
        - Using multiple filters and pooling layers alternating between the CNN layers
        - Modern architectures (ResNet, VGGnet, etc) may be applied to achieve better results.
 
-## __Results and Discussion:__
+## __Final Results and Discussion:__
 
 
   - _result & evaluate:_
